@@ -1,0 +1,5 @@
+openai>=1.0.0
+# For Gemini, use the official or community SDK if available, otherwise leave as a comment
+# google-generativeai>=0.1.0
+argparse
+requests 
