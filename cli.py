@@ -3,10 +3,10 @@ from prompts.prompt_engine import build_prompt
 from llm.openai_api import generate_with_openai
 from llm.gemini_api import generate_with_gemini
 
-# entry point 
+# entry point ...
 
 def main():
-    # Set args parser for CLI
+    # Set args parser for CLI...
     parser = argparse.ArgumentParser(description="Zero-Day/Exploit POC Generator CLI")
     parser.add_argument('--cve', required=True, help='CVE identifier (e.g., CVE-2023-XXXX)')
     parser.add_argument('--desc', required=True, help='Vulnerability summary/description')
@@ -16,7 +16,7 @@ def main():
     parser.add_argument('--llm', choices=['openai', 'gemini'], default='openai', help='LLM provider to use (default: openai)')
     args = parser.parse_args()
 
-    # Build the prompt  using user input
+    # Build the prompt  using user input...
     prompt = build_prompt(
         cve=args.cve,
         desc=args.desc,
@@ -25,13 +25,13 @@ def main():
         output_type=args.output_type
     )
 
-    # Call the selected LLM provider 
+    # Call the selected LLM provider ...
     if args.llm == 'openai':
         result = generate_with_openai(prompt)
     else:
-        result = generate_with_gemini(prompt)
+        result = generate_with_gemini(prompt)  #in LLM better use gemini sdk...
 
-    # Output the generated POC to the user
+    # Output the generated POC to the user...
     print("\n=== Generated POC ===\n")
     print(result)
 
